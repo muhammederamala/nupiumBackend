@@ -9,9 +9,14 @@ const formRoutes = require("./routes/forms");
 
 const app = express();
 
+const allowedOrigins = [
+  "http://localhost:3000",
+  "https://nupium-1.onrender.com",
+];
+
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: allowedOrigins,
     credentials: true,
   })
 );
