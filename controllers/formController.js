@@ -35,6 +35,8 @@ exports.postCareerForm = async (req, res, next) => {
 
     const file = req.file;
 
+    console.log(SMTP_PASS, SMTP_EMAIL);
+
     let mailOptions = {
       from: SMTP_EMAIL,
       // to: "career@fixtechcare.com",
