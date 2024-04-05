@@ -37,7 +37,8 @@ exports.postCareerForm = async (req, res, next) => {
 
     let mailOptions = {
       from: SMTP_EMAIL,
-      to: "career@fixtechcare.com",
+      // to: "career@fixtechcare.com",
+      to: "muhammederamala15@gmail.com",
       subject: "New Career Form Submission",
       text: `
         Name: ${name}
@@ -101,7 +102,8 @@ exports.postEnterpriseSubscriptionForm = async (req, res, next) => {
 
     let mailOptions = {
       from: SMTP_EMAIL,
-      to: "corporatesales@fixtechcare.com",
+      // to: "corporatesales@fixtechcare.com",
+      to: "muhammederamala15@gmail.com",
       subject: "New Subscription Form Submission",
       text: `
         Country: ${country}
@@ -146,7 +148,8 @@ exports.postContactUs = async (req, res, next) => {
       req.body;
     let mailOptions = {
       from: SMTP_EMAIL,
-      to: "info@fixtechcare.com",
+      // to: "info@fixtechcare.com",
+      to: "muhammederamala15@gmail.com",
       subject: `${subject} - ${queryType}`,
       text: `
         Name: ${name}
