@@ -70,7 +70,7 @@ exports.postCareerForm = async (req, res, next) => {
     console.error("Error submitting form:", err);
     res
       .status(500)
-      .json({ error: "An error occurred while processing the form" });
+      .json({ error: "An error occurred while processing the form", err: err });
   }
 };
 
