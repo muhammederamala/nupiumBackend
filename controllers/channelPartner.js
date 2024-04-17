@@ -118,12 +118,10 @@ app.post("/register", async (req, res) => {
       refid: refcode,
     });
 
-    res
-      .status(200)
-      .json({
-        status: true,
-        msg: "User registered successfully check mail for further instruction and unique refer code!",
-      });
+    res.status(200).json({
+      status: true,
+      msg: "User registered successfully check mail for further instruction and unique refer code!",
+    });
   } catch (error) {
     console.error("Error registering user:", error);
     res.status(500).json({ status: false, msg: "Internal server error" });
@@ -133,7 +131,6 @@ app.post("/register", async (req, res) => {
 app.post("/login", async (req, res) => {
   try {
     const { refid, rememberMe } = req.body;
-
     if (!refid) {
       return res.json({
         msg: "Please fill the login details completely",
@@ -141,11 +138,12 @@ app.post("/login", async (req, res) => {
       });
     }
 
-    const user = await User.findOne({ refid: refid });
+    const user = await User.findOne({ refid: refid.trim() });
 
     if (!user) {
       return res.json({ msg: "Invalid credentials", status: false });
     }
+
     const expiresIn = rememberMe ? "7d" : "2h";
     const token = jwt.sign({ id: user._id, refid }, TOKEN_KEY, { expiresIn });
     return res
@@ -334,12 +332,10 @@ app.post("/payout", auth, async (req, res) => {
 
     res.status(200).json(user);
   } catch (error) {
-    res
-      .status(500)
-      .json({
-        message: "Error updating payment info",
-        error: error.toString(),
-      });
+    res.status(500).json({
+      message: "Error updating payment info",
+      error: error.toString(),
+    });
   }
 });
 
