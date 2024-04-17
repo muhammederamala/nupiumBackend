@@ -6,6 +6,10 @@ const express = require("express");
 const bodyParser = require("body-parser");
 
 const formRoutes = require("./routes/forms");
+const channelPartnerRoutes = require("./routes/channelPartner");
+
+const connectDB = require("./config/db");
+connectDB();
 
 const app = express();
 
@@ -21,6 +25,7 @@ app.use(express.json());
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
+app.use("/partner", channelPartnerRoutes);
 app.use("/", formRoutes);
 
 app.listen(process.env.PORT, () => {
