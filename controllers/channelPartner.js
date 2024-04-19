@@ -8,7 +8,7 @@ const cookieParser = require("cookie-parser");
 const User = require("../models/user");
 const referral = require("../models/referral");
 const cloudinary = require("../config/cloudinary");
-const upload = require("../middleware/multer");
+const upload = require("../middleware/formMulter");
 const message = require("../models/message");
 
 const app = express();

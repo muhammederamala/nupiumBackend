@@ -12,17 +12,19 @@ const icon = require("../controllers/channelPartner");
 const register = require("../controllers/channelPartner");
 const mail = require("../controllers/channelPartner");
 
-router.post("/register", register);
-router.post("/login", login);
-router.get("/logout", logout);
-router.post("/upload", upload);
-router.post("/referral", referral);
-router.post("/commission", commission);
-router.get("/notify", notify);
-router.post("/icon", icon);
-router.post("/payout", payout);
-router.post("/user", user);
-router.patch("/user", user);
+const sessionMiddleware = require("../middleware/session");
+
+router.post("/register", sessionMiddleware, register);
+router.post("/login", sessionMiddleware, login);
+router.get("/logout", sessionMiddleware, logout);
+router.post("/upload", sessionMiddleware, upload);
+router.post("/referral", sessionMiddleware, referral);
+router.post("/commission", sessionMiddleware, commission);
+router.get("/notify", sessionMiddleware, notify);
+router.post("/icon", sessionMiddleware, icon);
+router.post("/payout", sessionMiddleware, payout);
+router.post("/user", sessionMiddleware, user);
+router.patch("/user", sessionMiddleware, user);
 router.post("/mail", mail);
 
 module.exports = router;

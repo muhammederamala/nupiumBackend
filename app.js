@@ -7,6 +7,7 @@ const bodyParser = require("body-parser");
 
 const formRoutes = require("./routes/forms");
 const channelPartnerRoutes = require("./routes/channelPartner");
+const adminRoutes = require("./routes/adminRoutes");
 
 const connectDB = require("./config/db");
 connectDB();
@@ -25,6 +26,7 @@ app.use(express.json());
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
+app.use("/admin", adminRoutes);
 app.use("/partner", channelPartnerRoutes);
 app.use("/", formRoutes);
 
