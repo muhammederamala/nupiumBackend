@@ -66,6 +66,7 @@ app.get("/logout", async (req, res) => {
 app.post("/list", auth, async (req, res) => {
   try {
     const { country } = req.body;
+    console.log(country);
     const data = await User.find({ country: country });
     res.status(200).json({ data });
   } catch (err) {
